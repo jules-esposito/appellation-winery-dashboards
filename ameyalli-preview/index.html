@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>AMEYALLI Preview Dinner</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Archivo:wght@300;400;500;600&display=swap">
+<style>
+:root{
+  --ground:#F5F3EF; --surface:#FCFBF8; --surface-2:#EFEBE3;
+  --ink:#2A1B10; --ink-2:#5C4E44; --ink-3:#8A7C71;
+  --brown:#6B3819; --gold:#A37A5C;
+  --rule:rgba(107,56,25,.16); --rule-soft:rgba(107,56,25,.09);
+  --band:#4A2510; --band-ink:#F5F3EF;
+  --ok-bg:rgba(47,80,71,.10); --ok-ink:#2F5047;
+  --hold-bg:rgba(163,122,92,.16); --hold-ink:#7A5335;
+  --flag-bg:rgba(152,58,30,.11); --flag-ink:#8A3419;
+  --shadow:0 1px 2px rgba(42,27,16,.05),0 6px 18px rgba(42,27,16,.04);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#191108; --surface:#221808; --surface-2:#2C2012;
+    --ink:#F2EDE5; --ink-2:#C4B7AA; --ink-3:#9A8B7D;
+    --brown:#C08A5E; --gold:#C79A76;
+    --rule:rgba(199,154,118,.22); --rule-soft:rgba(199,154,118,.12);
+    --band:#120C05; --band-ink:#F2EDE5;
+    --ok-bg:rgba(143,182,166,.14); --ok-ink:#A8CBBB;
+    --hold-bg:rgba(199,154,118,.16); --hold-ink:#DCB18C;
+    --flag-bg:rgba(217,138,98,.15); --flag-ink:#EFA684;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.26);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Archivo","Helvetica Neue",Arial,sans-serif;font-size:14.5px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:880px;margin:0 auto;padding:0 26px}
+@media(max-width:640px){.wrap{padding:0 18px}}
+
+.masthead{background:var(--band);color:var(--band-ink)}
+.masthead .wrap{padding-top:22px}
+.mh-top{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.mark{display:flex;flex-direction:column;gap:6px;padding-right:26px;border-right:1px solid rgba(245,243,239,.18)}
+.mark span{line-height:1;color:var(--band-ink);font-weight:400;white-space:nowrap}
+.mark .m1{font-size:18px;letter-spacing:.36em}
+.mark .m2{font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;opacity:.82}
+.mark .m3{font-size:8px;letter-spacing:.28em;text-transform:uppercase;opacity:.55}
+@media(max-width:560px){.mark{border-right:0;padding-right:0}}
+.mh-titles{flex:1 1 240px;min-width:230px}
+h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;font-size:clamp(25px,3.6vw,32px);line-height:1.1;margin:0}
+.mh-sub{margin:6px 0 0;font-size:12.5px;font-weight:300;color:rgba(245,243,239,.72)}
+.vitals{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-top:20px;border-top:1px solid rgba(245,243,239,.16);background:rgba(245,243,239,.16)}
+.vital{background:var(--band);padding:11px 14px 13px}
+.vital dt{font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,243,239,.5);margin:0 0 4px}
+.vital dd{margin:0;font-size:14px;font-variant-numeric:tabular-nums}
+.vital dd small{display:block;font-size:11px;font-weight:300;color:rgba(245,243,239,.58);margin-top:2px}
+@media(max-width:700px){.vitals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.tabbar{position:sticky;top:0;z-index:20;background:var(--ground);border-bottom:1px solid var(--rule)}
+.tabbar-inner{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabbar-inner::-webkit-scrollbar{display:none}
+.tab{appearance:none;border:0;background:none;cursor:pointer;font-family:inherit;font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);padding:14px 14px 12px;border-bottom:2px solid transparent;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--brown);border-bottom-color:var(--gold)}
+.tab:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+
+main{padding:28px 0 64px}
+section.block{margin:0 0 30px}
+h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:20px;line-height:1.2;margin:0 0 4px}
+.note{margin:0 0 14px;font-size:12.5px;color:var(--ink-3);font-weight:300}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--rule-soft);border-radius:2px;background:var(--surface);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{text-align:left;font-size:9px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);padding:9px 13px;border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:8px 13px;border-bottom:1px solid var(--rule-soft);vertical-align:top;font-weight:300;color:var(--ink-2)}
+td:first-child{color:var(--ink);font-weight:400}
+tr:last-child td{border-bottom:0}
+td.num,th.num{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+td.num{color:var(--ink);font-weight:400}
+.sub td{background:var(--surface-2);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brown)}
+
+.chip{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 7px;border-radius:2px;white-space:nowrap}
+.chip.ok{background:var(--ok-bg);color:var(--ok-ink)}
+.chip.hold{background:var(--hold-bg);color:var(--hold-ink)}
+.chip.flag{background:var(--flag-bg);color:var(--flag-ink)}
+
+.dayhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:8px;margin:0 0 4px;border-bottom:1px solid var(--rule)}
+.dayhead .when{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px}
+.dayhead .tagline{font-size:11px;color:var(--ink-3)}
+.phase{margin:20px 0 8px;font-size:9.5px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--gold)}
+.ros{border-top:1px solid var(--rule-soft)}
+.slot{display:grid;grid-template-columns:86px 1fr;gap:16px;padding:8px 0;border-bottom:1px solid var(--rule-soft);align-items:baseline}
+.slot .time{font-size:13.5px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--brown);white-space:nowrap}
+.slot .what{min-width:0;font-size:14px}
+.slot .what em{font-style:normal;color:var(--ink-3);font-size:12.5px;font-weight:300}
+.slot.hi{background:linear-gradient(90deg,var(--surface-2),transparent 70%);margin:0 -10px;padding:8px 10px}
+.slot.hi .time{font-weight:600}
+.slot.hi .what{font-weight:500}
+@media(max-width:520px){.slot{grid-template-columns:70px 1fr;gap:10px}}
+
+.menugrid{display:grid;grid-template-columns:1fr 1.3fr;gap:16px;align-items:start}
+@media(max-width:720px){.menugrid{grid-template-columns:1fr}}
+.menucard{background:var(--surface);border:1px solid var(--rule-soft);border-radius:2px;padding:26px 24px 28px;box-shadow:var(--shadow)}
+.mhead{text-align:center;padding-bottom:16px;border-bottom:1px solid var(--rule)}
+.mhead .t{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;font-weight:300;letter-spacing:.09em;text-transform:uppercase;margin:0;line-height:1.25}
+.mhead .s{margin:6px 0 0;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.course{padding:16px 0;border-bottom:1px solid var(--rule-soft);text-align:center}
+.course:last-child{border-bottom:0;padding-bottom:2px}
+.course .cn{font-family:"Cormorant Garamond",Georgia,serif;font-size:18px;font-weight:400;margin:0;line-height:1.25}
+.course .cd{margin:4px auto 0;font-size:13px;font-weight:300;color:var(--ink-2);max-width:44ch}
+.course .cp{margin:8px auto 0;font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-size:14px;font-weight:300;color:var(--brown);max-width:42ch;line-height:1.35}
+
+.key{border-left:2px solid var(--gold);background:var(--surface-2);padding:11px 15px;border-radius:0 2px 2px 0;margin:0 0 20px}
+.key p{margin:0;font-size:13.5px;font-weight:300;color:var(--ink-2)}
+.key p+p{margin-top:6px}
+.key b{font-weight:500;color:var(--ink)}
+
+footer{border-top:1px solid var(--rule);padding:18px 0 34px}
+footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+<div class="wrap">
+<div class="mh-top">
+<div class="mark" aria-label="AMEYALLI Park City by Appellation">
+<span class="m1">AMEYALLI</span>
+<span class="m2">Park City</span>
+<span class="m3">by Appellation</span>
+</div>
+<div class="mh-titles">
+<h1>An Evening at AMEYALLI</h1>
+<p class="mh-sub">With Chef Charlie Palmer &nbsp;&middot;&nbsp; Friday, September 11</p>
+</div>
+</div>
+<dl class="vitals">
+<div class="vital"><dt>Cocktail hour</dt><dd>5:30 p.m.</dd></div>
+<div class="vital"><dt>Dinner</dt><dd>6:30 p.m.</dd></div>
+<div class="vital"><dt>Guests</dt><dd>50</dd></div>
+<div class="vital"><dt>Location</dt><dd>Residence Club<small>Clubhouse, Midway</small></dd></div>
+</dl>
+</div>
+</header>
+
+<nav class="tabbar" aria-label="Sections">
+<div class="wrap">
+<div class="tabbar-inner" role="tablist">
+<button class="tab" role="tab" id="tab-ros" aria-controls="p-ros" aria-selected="true">Run of show</button>
+<button class="tab" role="tab" id="tab-rentals" aria-controls="p-rentals" aria-selected="false">Rentals and decor</button>
+<button class="tab" role="tab" id="tab-menu" aria-controls="p-menu" aria-selected="false">Menu</button>
+<button class="tab" role="tab" id="tab-bags" aria-controls="p-bags" aria-selected="false">Gift bags</button>
+</div>
+</div>
+</nav>
+
+<main class="wrap">
+
+<div class="panel" id="p-ros" role="tabpanel" aria-labelledby="tab-ros">
+<section class="block">
+<div class="dayhead">
+<span class="when">Thursday, September 10</span>
+<span class="tagline">Advance setup</span>
+</div>
+<div class="ros">
+<div class="slot"><div class="time">Morning</div><div class="what">Rentals installed. Gift bags assembled and filled.</div></div>
+<div class="slot"><div class="time">1:00 p.m.</div><div class="what">Rental review. <em>Jules and Jojo confirm everything arrived.</em></div></div>
+<div class="slot"><div class="time">2:00 p.m.</div><div class="what">Team walkthrough. <em>Chuck, CPC, John Platt, Jojo.</em></div></div>
+</div>
+</section>
+<section class="block">
+<div class="dayhead">
+<span class="when">Friday, September 11</span>
+<span class="tagline">Event day</span>
+</div>
+<p class="phase">Setup</p>
+<div class="ros">
+<div class="slot"><div class="time">1:30 p.m.</div><div class="what">Culinary load-in. Room setup begins.</div></div>
+<div class="slot"><div class="time">2:30 p.m.</div><div class="what">Signage and print staged.</div></div>
+<div class="slot"><div class="time">3:00 p.m.</div><div class="what">AV and lighting test. Linens placed.</div></div>
+<div class="slot hi"><div class="time">3:30 p.m.</div><div class="what">Tables finalized. Glassware placed.</div></div>
+<div class="slot"><div class="time">4:00 p.m.</div><div class="what">Florals. <em>Branching Out installs.</em></div></div>
+<div class="slot hi"><div class="time">4:00 p.m.</div><div class="what">Gift bags preset on every chair. <em>Jojo and Jules.</em></div></div>
+<div class="slot"><div class="time">4:15 p.m.</div><div class="what">Staff pre-shift. <em>Service sequence, assignments, menu, pairings, dietary restrictions.</em></div></div>
+<div class="slot hi"><div class="time">4:30 p.m.</div><div class="what">Bar fully set. <em>Glassware, ice, garnish, champagne and cocktail components in place.</em></div></div>
+<div class="slot"><div class="time">4:30 p.m.</div><div class="what">Musician load-in.</div></div>
+<div class="slot"><div class="time">4:45 p.m.</div><div class="what">Photo and video on site.</div></div>
+<div class="slot hi"><div class="time">5:00 p.m.</div><div class="what">Room fully set. <em>Final inspection. Restrooms checked, wine chilled and opened.</em></div></div>
+</div>
+<p class="phase">Reception, pool deck</p>
+<div class="ros">
+<div class="slot"><div class="time">5:20 p.m.</div><div class="what">Music begins.</div></div>
+<div class="slot hi"><div class="time">5:30 p.m.</div><div class="what">Guest arrival.</div></div>
+<div class="slot"><div class="time">6:15 p.m.</div><div class="what">Chuck's remarks, guests invited upstairs. <em>Servers collect beverages on trays.</em></div></div>
+</div>
+<p class="phase">Dinner, rooftop</p>
+<div class="ros">
+<div class="slot"><div class="time">6:20 p.m.</div><div class="what">Guests seated. <em>Bread and butter preset.</em></div></div>
+<div class="slot"><div class="time">6:20 p.m.</div><div class="what">Water service begins.</div></div>
+<div class="slot"><div class="time">6:25 p.m.</div><div class="what">First wine poured.</div></div>
+<div class="slot"><div class="time">6:40 p.m.</div><div class="what">Charlie's welcome and menu remarks.</div></div>
+<div class="slot hi"><div class="time">6:45 p.m.</div><div class="what">First course served.</div></div>
+<div class="slot"><div class="time">7:15 p.m.</div><div class="what">First course cleared.</div></div>
+<div class="slot"><div class="time">7:25 p.m.</div><div class="what">Second wine poured.</div></div>
+<div class="slot hi"><div class="time">7:30 p.m.</div><div class="what">Second course served.</div></div>
+<div class="slot"><div class="time">8:05 p.m.</div><div class="what">Second course cleared.</div></div>
+<div class="slot"><div class="time">8:15 p.m.</div><div class="what">Third wine poured.</div></div>
+<div class="slot hi"><div class="time">8:20 p.m.</div><div class="what">Third course served.</div></div>
+<div class="slot"><div class="time">8:45 p.m.</div><div class="what">Closing remarks. <em>Charlie and Chuck.</em></div></div>
+<div class="slot"><div class="time">8:50 p.m.</div><div class="what">Third course cleared.</div></div>
+<div class="slot"><div class="time">9:00 p.m.</div><div class="what">Guest departure. Room reset and breakdown begins.</div></div>
+</div>
+</section>
+</div>
+
+<div class="panel" id="p-rentals" role="tabpanel" aria-labelledby="tab-rentals" hidden>
+<section class="block">
+<h2>Rentals</h2>
+<p class="note">Not yet confirmed. Quantities calculated against 50 guests.</p>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Item</th><th class="num">Qty</th><th>Where</th><th>Note</th></tr></thead>
+<tbody>
+<tr class="sub"><td colspan="4">Tables and linens</td></tr>
+<tr><td>Bar height table</td><td class="num">2</td><td>Deck, rooftop</td><td></td></tr>
+<tr><td>Bar height linens, Belize 108 x 156</td><td class="num">2</td><td>Deck, rooftop</td><td></td></tr>
+<tr><td>High top cocktail tables</td><td class="num">5</td><td>Pool deck</td><td></td></tr>
+<tr><td>High top linens, Belize</td><td class="num">5</td><td>Pool deck</td><td></td></tr>
+<tr><td>Dining tables, 8 ft x 42 in</td><td class="num">8</td><td>Rooftop</td><td></td></tr>
+<tr><td>Dining chairs</td><td class="num">52</td><td>Rooftop</td><td>50 plus 2 spare</td></tr>
+<tr><td>Dining linens, ivory</td><td class="num">8?</td><td>Rooftop</td><td><span class="chip flag">Confirm</span></td></tr>
+<tr><td>White tablecloths</td><td class="num">TBD</td><td>Rooftop</td><td><span class="chip flag">Confirm</span></td></tr>
+<tr><td>Napkins</td><td class="num">100</td><td>Rooftop</td><td></td></tr>
+<tr class="sub"><td colspan="4">Glassware</td></tr>
+<tr><td>AP glasses, sparkling and white</td><td class="num">225</td><td>Rooftop</td><td><span class="chip flag">4.5 vs 3 pp</span></td></tr>
+<tr><td>Bordeaux, red</td><td class="num">100</td><td>Rooftop</td><td></td></tr>
+<tr><td>Rocks, water and cocktail</td><td class="num">125</td><td>Rooftop</td><td></td></tr>
+<tr class="sub"><td colspan="4">Tableware and cutlery</td></tr>
+<tr><td>Chargers</td><td class="num">50</td><td>Rooftop</td><td></td></tr>
+<tr><td>Plates: B&amp;B, salad, dinner, dessert</td><td class="num">75 ea</td><td>Rooftop</td><td></td></tr>
+<tr><td>Mignardises plates</td><td class="num">20</td><td>Rooftop</td><td></td></tr>
+<tr><td>Bread baskets, butter dishes</td><td class="num">12 ea</td><td>Rooftop</td><td></td></tr>
+<tr><td>Dinner forks</td><td class="num">150</td><td>Rooftop</td><td></td></tr>
+<tr><td>Spoons</td><td class="num">75</td><td>Rooftop</td><td></td></tr>
+<tr><td>Steak knives, butter knives</td><td class="num">60 ea</td><td>Rooftop</td><td></td></tr>
+<tr class="sub"><td colspan="4">Service and bar</td></tr>
+<tr><td>Trays</td><td class="num">10</td><td>Rooftop</td><td></td></tr>
+<tr><td>Water pitchers, steel</td><td class="num">10</td><td>Rooftop</td><td></td></tr>
+<tr><td>Water pitchers, 60 oz glass</td><td class="num">4</td><td>Pool deck</td><td></td></tr>
+<tr><td>Wine buckets</td><td class="num">2</td><td>Rooftop</td><td></td></tr>
+<tr><td>Beverage dispenser</td><td class="num">1</td><td>Rooftop</td><td>Cocktail, mocktail</td></tr>
+<tr><td>Bus tubs</td><td class="num">TBD</td><td>Rooftop</td><td><span class="chip hold">Open</span></td></tr>
+<tr class="sub"><td colspan="4">Decor and lighting</td></tr>
+<tr><td>Hurricane candles and holders</td><td class="num">20</td><td>Rooftop</td><td></td></tr>
+<tr><td>LED pillar candles, 2 heights</td><td class="num">24</td><td>Staircase</td><td><span class="chip ok">Ordered</span></td></tr>
+<tr><td>LED votives</td><td class="num">TBD</td><td>Tables</td><td><span class="chip hold">Chuck</span></td></tr>
+<tr><td>Balloon lights</td><td class="num">TBD</td><td>Rooftop</td><td><span class="chip hold">Chuck</span></td></tr>
+<tr><td>Photo frame</td><td class="num">1</td><td>Pool deck</td><td><span class="chip flag">To order</span></td></tr>
+<tr><td>Florals</td><td class="num">1</td><td>Both</td><td>Branching Out</td></tr>
+<tr class="sub"><td colspan="4">Back of house</td></tr>
+<tr><td>Convection oven, 2 door</td><td class="num">1</td><td>Kitchen</td><td>Approx 4 x 3 ft</td></tr>
+<tr><td>Induction burners</td><td class="num">4</td><td>Kitchen</td><td></td></tr>
+<tr><td>6 ft prep tables</td><td class="num">4</td><td>Kitchen</td><td></td></tr>
+<tr><td>Pipe and drape dividers</td><td class="num">2?</td><td>Kitchen</td><td>Screen the prep area</td></tr>
+<tr><td>Floor protection, trash bags</td><td class="num">1 ea</td><td>Kitchen</td><td><span class="chip flag">To order</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+
+<div class="panel" id="p-menu" role="tabpanel" aria-labelledby="tab-menu" hidden>
+<div class="menugrid">
+<div class="menucard">
+<div class="mhead">
+<p class="t">Cocktail Hour</p>
+<p class="s">5:30 p.m. &nbsp;&middot;&nbsp; Pool Deck</p>
+</div>
+<div class="course">
+<p class="cn">Champagne</p>
+<p class="cd">Moet Imperial Brut, NV, France</p>
+</div>
+<div class="course">
+<p class="cn">Rosemary Gimlet</p>
+<p class="cd">Park City Alpine Summit Gin, St. Germain, lime, rosemary</p>
+</div>
+<div class="course">
+<p class="cn">New Fashion</p>
+<p class="cd">Eight Settlers Devils Gate Bourbon, drunken cherry syrup, bitters, orange</p>
+</div>
+<div class="course">
+<p class="cn">Basil Strawberry Iced Tea</p>
+<p class="cd">Zero proof</p>
+</div>
+</div>
+<div class="menucard">
+<div class="mhead">
+<p class="t">An Evening at AMEYALLI</p>
+<p class="s">6:30 p.m. &nbsp;&middot;&nbsp; Rooftop</p>
+</div>
+<div class="course">
+<p class="cn">Ballerina Farm Biscuits</p>
+<p class="cd">Cultured butter, sea salt</p>
+</div>
+<div class="course">
+<p class="cn">Heirloom Tomato and Peach Caprese</p>
+<p class="cd">Burrata, basil mint pesto, toasted pine nuts, balsamic</p>
+<p class="cp">Sancerre, Paul Thomas, Chavignol, France '24</p>
+</div>
+<div class="course">
+<p class="cn">Filet Mignon</p>
+<p class="cd">Wild mushroom beurre rouge, black truffle potato gratin</p>
+<p class="cp">Cabernet Sauvignon, Silver Oak, Alexander Valley CA '21</p>
+</div>
+<div class="course">
+<p class="cn">Strawberry Rhubarb Crisp</p>
+<p class="cd">Rhubarb ginger jam, Aggie vanilla ice cream</p>
+<p class="cp">Cascina Montagnola Sornione, Late Harvest Sauvignon Blanc</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="panel" id="p-bags" role="tabpanel" aria-labelledby="tab-bags" hidden>
+<div class="key">
+<p>Jojo to confirm all gift bag materials are on property prior to Jules' arrival on the 10th.</p>
+<p><b>One gift bag preset on every chair by 4 p.m.</b>, by Jojo and Jules.</p>
+</div>
+<section class="block">
+<h2>Contents</h2>
+<div class="tablewrap">
+<table>
+<thead><tr><th>Item</th><th class="num">Qty</th></tr></thead>
+<tbody>
+<tr><td>Ameyalli bag</td><td class="num">52</td></tr>
+<tr><td>Wineland book</td><td class="num">52</td></tr>
+<tr><td>Ameyalli hat</td><td class="num">52</td></tr>
+<tr><td>Paper brochure</td><td class="num">52</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+
+</main>
+
+<footer class="wrap">
+<p>From the run of show, logistics tracker, menus and AMEYALLI brand dossier.</p>
+</footer>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function show(id, push){
+    tabs.forEach(function(t){
+      var sel = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', sel ? 'true' : 'false');
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !sel;
+    });
+    if (push) { try { history.replaceState(null, '', '#' + id.replace(/^p-/, '')); } catch(e){} }
+    window.scrollTo({top:0, behavior:'auto'});
+  }
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){ show(t.getAttribute('aria-controls'), true); });
+    t.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(t), n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i+1) % tabs.length];
+      if (e.key === 'ArrowLeft') n = tabs[(i-1+tabs.length) % tabs.length];
+      if (n) { e.preventDefault(); n.focus(); show(n.getAttribute('aria-controls'), true); }
+    });
+  });
+  var h = (location.hash || '').replace(/^#/, '');
+  if (h && document.getElementById('p-' + h)) { show('p-' + h, false); }
+})();
+</script>
+</body>
+</html>
