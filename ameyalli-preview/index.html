@@ -16,6 +16,7 @@
   --ok-bg:rgba(47,80,71,.10); --ok-ink:#2F5047;
   --hold-bg:rgba(163,122,92,.16); --hold-ink:#7A5335;
   --flag-bg:rgba(152,58,30,.11); --flag-ink:#8A3419;
+  --v:#367588; --v-bg:rgba(54,117,136,.08);
   --shadow:0 1px 2px rgba(42,27,16,.05),0 6px 18px rgba(42,27,16,.04);
 }
 @media (prefers-color-scheme:dark){
@@ -28,6 +29,7 @@
     --ok-bg:rgba(143,182,166,.14); --ok-ink:#A8CBBB;
     --hold-bg:rgba(199,154,118,.16); --hold-ink:#DCB18C;
     --flag-bg:rgba(217,138,98,.15); --flag-ink:#EFA684;
+    --v:#7BB4C4; --v-bg:rgba(123,180,196,.11);
     --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.26);
   }
 }
@@ -85,6 +87,9 @@ td.num{color:var(--ink);font-weight:400}
 .chip.hold{background:var(--hold-bg);color:var(--hold-ink)}
 .chip.flag{background:var(--flag-bg);color:var(--flag-ink)}
 
+.legend{display:inline-flex;align-items:center;gap:8px;margin:0 0 22px;padding:9px 14px;background:var(--surface);border:1px solid var(--rule-soft);border-radius:2px;box-shadow:var(--shadow);font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.legend i{width:15px;height:3px;border-radius:2px;display:inline-block;flex:none;background:var(--v)}
+
 .dayhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding-bottom:8px;margin:0 0 4px;border-bottom:1px solid var(--rule)}
 .dayhead .when{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px}
 .dayhead .tagline{font-size:11px;color:var(--ink-3)}
@@ -97,6 +102,9 @@ td.num{color:var(--ink);font-weight:400}
 .slot.hi{background:linear-gradient(90deg,var(--surface-2),transparent 70%);margin:0 -10px;padding:8px 10px}
 .slot.hi .time{font-weight:600}
 .slot.hi .what{font-weight:500}
+.slot.v{box-shadow:inset 3px 0 0 var(--v);background:var(--v-bg);margin:0 -12px;padding:8px 12px;border-radius:0 2px 2px 0}
+.slot.v .time{color:var(--v)}
+.vtag{display:inline-block;margin-left:9px;font-size:8.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--v);vertical-align:1.5px}
 @media(max-width:520px){.slot{grid-template-columns:70px 1fr;gap:10px}}
 
 .menugrid{display:grid;grid-template-columns:1fr 1.3fr;gap:16px;align-items:start}
@@ -158,6 +166,7 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
 <main class="wrap">
 
 <div class="panel" id="p-ros" role="tabpanel" aria-labelledby="tab-ros">
+<div class="legend"><i></i>Vendor arrival</div>
 <section class="block">
 <div class="dayhead">
 <span class="when">Thursday, September 10</span>
@@ -176,16 +185,16 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
 </div>
 <p class="phase">Setup</p>
 <div class="ros">
-<div class="slot"><div class="time">1:30 p.m.</div><div class="what">Culinary load-in. Room setup begins.</div></div>
+<div class="slot v"><div class="time">1:30 p.m.</div><div class="what">Culinary load-in. Room setup begins. <span class="vtag">Culinary</span></div></div>
 <div class="slot"><div class="time">2:30 p.m.</div><div class="what">Signage and print staged.</div></div>
 <div class="slot"><div class="time">3:00 p.m.</div><div class="what">AV and lighting test. Linens placed.</div></div>
 <div class="slot hi"><div class="time">3:30 p.m.</div><div class="what">Tables finalized. Glassware placed.</div></div>
-<div class="slot"><div class="time">4:00 p.m.</div><div class="what">Florals. <em>Branching Out installs.</em></div></div>
+<div class="slot v"><div class="time">4:00 p.m.</div><div class="what">Florals. <em>Branching Out installs.</em> <span class="vtag">Florist</span></div></div>
 <div class="slot hi"><div class="time">4:00 p.m.</div><div class="what">Gift bags preset on every chair. <em>Jojo and Jules.</em></div></div>
 <div class="slot"><div class="time">4:15 p.m.</div><div class="what">Staff pre-shift. <em>Service sequence, assignments, menu, pairings, dietary restrictions.</em></div></div>
 <div class="slot hi"><div class="time">4:30 p.m.</div><div class="what">Bar fully set. <em>Glassware, ice, garnish, champagne and cocktail components in place.</em></div></div>
-<div class="slot"><div class="time">4:30 p.m.</div><div class="what">Musician load-in.</div></div>
-<div class="slot"><div class="time">4:45 p.m.</div><div class="what">Photo and video on site.</div></div>
+<div class="slot v"><div class="time">4:30 p.m.</div><div class="what">Musician load-in. <span class="vtag">Musician</span></div></div>
+<div class="slot v"><div class="time">4:45 p.m.</div><div class="what">Photo and video on site. <span class="vtag">Photographer</span></div></div>
 <div class="slot hi"><div class="time">5:00 p.m.</div><div class="what">Room fully set. <em>Final inspection. Restrooms checked, wine chilled and opened.</em></div></div>
 </div>
 <p class="phase">Reception, pool deck</p>
