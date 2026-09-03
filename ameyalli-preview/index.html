@@ -72,6 +72,31 @@ section.block{margin:0 0 30px}
 h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:20px;line-height:1.2;margin:0 0 4px}
 .note{margin:0 0 14px;font-size:12.5px;color:var(--ink-3);font-weight:300}
 
+.lead{font-size:15px;font-weight:300;color:var(--ink-2);margin:0 0 22px;max-width:60ch}
+.factrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--rule-soft);border:1px solid var(--rule-soft);border-radius:2px;margin:0 0 22px}
+.fact{background:var(--surface);padding:13px 16px}
+.fact dt{margin:0 0 5px;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.fact dd{margin:0;font-size:14.5px}
+.fact a{color:var(--brown);text-decoration:none;border-bottom:1px solid var(--rule)}
+.fact a:hover{border-bottom-color:var(--brown)}
+.fact dd small{display:block;font-size:12px;font-weight:300;color:var(--ink-3);margin-top:3px}
+@media(max-width:560px){.factrow{grid-template-columns:1fr}}
+.rules{margin:0 0 26px;padding:14px 18px;border-left:2px solid var(--v);background:var(--v-bg);border-radius:0 2px 2px 0}
+.rules p{margin:0;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.rules ul{margin:9px 0 0;padding-left:17px;font-size:13.5px;font-weight:300;color:var(--ink-2)}
+.rules li{margin:4px 0}
+.rules b{font-weight:500;color:var(--ink)}
+.navgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:8px}
+@media(max-width:560px){.navgrid{grid-template-columns:1fr}}
+.navbtn{appearance:none;text-align:left;cursor:pointer;font-family:inherit;
+  background:var(--surface);border:1px solid var(--rule-soft);border-left:2px solid var(--gold);
+  border-radius:0 2px 2px 0;padding:20px 20px 22px;box-shadow:var(--shadow);
+  transition:border-left-color .15s ease,transform .15s ease}
+.navbtn:hover{border-left-color:var(--brown);transform:translateY(-1px)}
+.navbtn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.navbtn .nt{display:block;font-family:"Cormorant Garamond",Georgia,serif;font-size:21px;font-weight:400;color:var(--ink);line-height:1.15}
+.navbtn .nd{display:block;margin-top:5px;font-size:12.5px;font-weight:300;color:var(--ink-3)}
+
 .tablewrap{overflow-x:auto;border:1px solid var(--rule-soft);border-radius:2px;background:var(--surface);box-shadow:var(--shadow)}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th{text-align:left;font-size:9px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);padding:9px 13px;border-bottom:1px solid var(--rule);white-space:nowrap}
@@ -155,7 +180,8 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
 <nav class="tabbar" aria-label="Sections">
 <div class="wrap">
 <div class="tabbar-inner" role="tablist">
-<button class="tab" role="tab" id="tab-ros" aria-controls="p-ros" aria-selected="true">Run of show</button>
+<button class="tab" role="tab" id="tab-home" aria-controls="p-home" aria-selected="true">Home</button>
+<button class="tab" role="tab" id="tab-ros" aria-controls="p-ros" aria-selected="false">Run of show</button>
 <button class="tab" role="tab" id="tab-rentals" aria-controls="p-rentals" aria-selected="false">Rentals and decor</button>
 <button class="tab" role="tab" id="tab-menu" aria-controls="p-menu" aria-selected="false">Menu</button>
 <button class="tab" role="tab" id="tab-bags" aria-controls="p-bags" aria-selected="false">Gift bags</button>
@@ -165,7 +191,40 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
 
 <main class="wrap">
 
-<div class="panel" id="p-ros" role="tabpanel" aria-labelledby="tab-ros">
+<div class="panel" id="p-home" role="tabpanel" aria-labelledby="tab-home">
+
+<p class="lead">Everything for Friday night in one place. Start here, then jump to what you need.</p>
+
+<dl class="factrow">
+<div class="fact">
+<dt>Address</dt>
+<dd><a href="https://maps.google.com/?q=832+Wellness+Drive,+Midway,+UT+84049" target="_blank" rel="noopener">832 Wellness Drive, Midway, UT 84049</a><small>Residence Club Clubhouse</small></dd>
+</div>
+<div class="fact">
+<dt>Questions on the day</dt>
+<dd>Jules Esposito<small><a href="tel:+12038005276">203-800-5276</a> &nbsp;&middot;&nbsp; Director of F&amp;B</small></dd>
+</div>
+</dl>
+
+<div class="rules">
+<p>Three things not to get wrong</p>
+<ul>
+<li><b>Guests enter by the side stair</b> and the gap in the site wall. Never the front door.</li>
+<li><b>Restrooms are through the pool door only.</b></li>
+<li><b>The ground floor is Chef Platt's prep space.</b> No guest access.</li>
+</ul>
+</div>
+
+<div class="navgrid">
+<button class="navbtn" data-go="p-ros"><span class="nt">Run of show</span><span class="nd">Thursday setup through Saturday pick-up</span></button>
+<button class="navbtn" data-go="p-rentals"><span class="nt">Rentals and decor</span><span class="nd">Diamond reservation 431664</span></button>
+<button class="navbtn" data-go="p-menu"><span class="nt">Menu</span><span class="nd">Cocktail hour and three courses</span></button>
+<button class="navbtn" data-go="p-bags"><span class="nt">Gift bags</span><span class="nd">52 bags, preset on every chair</span></button>
+</div>
+
+</div>
+
+<div class="panel" id="p-ros" role="tabpanel" aria-labelledby="tab-ros" hidden>
 <div class="legend"><i></i>Vendor arrival</div>
 
 <section class="block">
@@ -423,6 +482,9 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
       if (e.key === 'ArrowLeft') n = tabs[(i-1+tabs.length) % tabs.length];
       if (n) { e.preventDefault(); n.focus(); show(n.getAttribute('aria-controls'), true); }
     });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.navbtn'), function(b){
+    b.addEventListener('click', function(){ show(b.getAttribute('data-go'), true); });
   });
   var h = (location.hash || '').replace(/^#/, '');
   if (h && document.getElementById('p-' + h)) { show('p-' + h, false); }
