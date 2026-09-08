@@ -107,6 +107,11 @@ td.num{color:var(--ink);font-weight:400}
 .chip.hold{background:var(--hold-bg);color:var(--hold-ink)}
 .chip.flag{background:var(--flag-bg);color:var(--flag-ink)}
 
+.plan{margin:0 0 22px;background:var(--surface);border:1px solid var(--rule-soft);border-radius:2px;overflow:hidden;box-shadow:var(--shadow)}
+.plan img{display:block;width:100%;height:auto;background:#fff}
+.plan figcaption{padding:10px 14px 12px;font-size:12.5px;font-weight:300;color:var(--ink-2)}
+.plan figcaption b{font-weight:500;color:var(--ink)}
+
 .legend{display:inline-flex;align-items:center;gap:8px;margin:0 0 22px;padding:9px 14px;background:var(--surface);border:1px solid var(--rule-soft);border-radius:2px;box-shadow:var(--shadow);font-size:9.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
 .legend i{width:15px;height:3px;border-radius:2px;display:inline-block;flex:none;background:var(--v)}
 
@@ -178,6 +183,7 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
 <button class="tab" role="tab" id="tab-home" aria-controls="p-home" aria-selected="true">Home</button>
 <button class="tab" role="tab" id="tab-ros" aria-controls="p-ros" aria-selected="false">Run of show</button>
 <button class="tab" role="tab" id="tab-rentals" aria-controls="p-rentals" aria-selected="false">Rentals and decor</button>
+<button class="tab" role="tab" id="tab-plans" aria-controls="p-plans" aria-selected="false">Floorplans</button>
 <button class="tab" role="tab" id="tab-menu" aria-controls="p-menu" aria-selected="false">Menu</button>
 <button class="tab" role="tab" id="tab-bags" aria-controls="p-bags" aria-selected="false">Gift bags</button>
 </div>
@@ -202,6 +208,7 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
 <div class="navgrid">
 <button class="navbtn" data-go="p-ros"><span class="nt">Run of show</span><span class="nd">Thursday setup through Saturday pick-up</span></button>
 <button class="navbtn" data-go="p-rentals"><span class="nt">Rentals and decor</span><span class="nd">Diamond reservation 431664</span></button>
+<button class="navbtn" data-go="p-plans"><span class="nt">Floorplans</span><span class="nd">Ground floor and rooftop layouts</span></button>
 <button class="navbtn" data-go="p-menu"><span class="nt">Menu</span><span class="nd">Cocktail hour and three courses</span></button>
 <button class="navbtn" data-go="p-bags"><span class="nt">Gift bags</span><span class="nd">52 bags, preset on every chair</span></button>
 </div>
@@ -363,10 +370,27 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
 <tr><td>Photo frame</td><td class="num">1</td><td>Pool deck</td><td><span class="chip flag">To order</span></td></tr>
 <tr><td>Florals</td><td class="num">1</td><td>Both</td><td>Branching Out</td></tr>
 <tr><td>Room divider</td><td class="num">TBD</td><td>Kitchen</td><td><span class="chip flag">To order</span> Screen the prep area</td></tr>
+<tr><td>Tall potted plants</td><td class="num">2</td><td>Entrance</td><td><span class="chip flag">To order</span> Flanking the gate, on the plan</td></tr>
 </tbody>
 </table>
 </div>
 </section>
+</div>
+
+<div class="panel" id="p-plans" role="tabpanel" aria-labelledby="tab-plans" hidden>
+
+<p class="note" style="margin-bottom:18px">Both plans are working drafts. Confirm against the room before you set to them.</p>
+
+<figure class="plan">
+<img src="plans/cocktail-hour-ground-floor.jpg" alt="Cocktail hour ground floor layout, v14">
+<figcaption><b>Cocktail hour, ground floor.</b> v14. Bar top-center between the hot tub and the relocated lounge. Five high-tops across the plaza. Musician at the left. Guests enter through the metal pool door; welcome sign and two potted plants outside the gate, step and repeat just inside. Restrooms reached only through the pool door. Chef Platt's prep space is the clubhouse ground floor, no guest access.</figcaption>
+</figure>
+
+<figure class="plan">
+<img src="plans/rooftop-dinner.jpg" alt="Rooftop dinner layout, v7">
+<figcaption><b>Dinner, rooftop.</b> v7, 42 in tables confirmed. Two rows of four 8 ft tables, 32 ft per row, 26 in spacing, 14 per side, 56 seats. Roughly 8 ft center aisle and 5.6 ft clearance at each end. Wine bar angled into the northwest corner. Speakers in opposite corners, no musician during dinner. Northeast corner kept clear at the stair landing.</figcaption>
+</figure>
+
 </div>
 
 <div class="panel" id="p-menu" role="tabpanel" aria-labelledby="tab-menu" hidden>
@@ -445,7 +469,7 @@ footer p{margin:0;font-size:11px;color:var(--ink-3);font-weight:300}
 </main>
 
 <footer class="wrap">
-<p>From the run of show, Diamond reservation 431664, menus and AMEYALLI brand dossier.</p>
+<p>From the run of show, Diamond reservation 431664, menus, floorplans and AMEYALLI brand dossier.</p>
 </footer>
 
 <script>
