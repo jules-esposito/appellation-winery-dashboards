@@ -1,0 +1,302 @@
+/* Shared Appellation Winery of the Month partnership dashboard styles */
+:root {
+  --cast-iron: #2B2A28;
+  --copper: #B5754A;
+  --green: #5C6B41;
+  --green-dark: #3F4A2D;
+  --green-tint: #EEF0E7;
+  --linen: #F2EDE4;
+  --mustard: #C9A227;
+  --off-white: #FAF7F2;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: var(--off-white);
+  color: var(--cast-iron);
+  -webkit-font-smoothing: antialiased;
+}
+header {
+  background: var(--cast-iron);
+  color: var(--off-white);
+  padding: 56px 40px 44px;
+  text-align: center;
+}
+.logo {
+  width: 210px;
+  height: auto;
+  margin: 0 auto 22px;
+  display: block;
+}
+header h1 {
+  font-size: 38px;
+  letter-spacing: 0.5px;
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+header p.sub {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: var(--linen);
+  opacity: 0.8;
+  margin: 0;
+}
+
+.intro {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 52px 24px 0;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #4A473F;
+}
+
+.winery-field {
+  max-width: 360px;
+  margin: 34px auto 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+.winery-field label {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #A69C86;
+  margin-bottom: 10px;
+}
+.winery-field .field-line {
+  border-bottom: 1px solid #D8CFBC;
+  height: 28px;
+}
+
+main {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 60px 24px 20px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+@media (max-width: 800px) {
+  .columns { grid-template-columns: 1fr; }
+}
+
+.value-card {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #E4DCCB;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(43,42,40,0.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 22px 26px;
+  color: white;
+}
+.provides-col .card-header { background: var(--green); }
+.commits-col .card-header { background: var(--green-dark); }
+
+.card-header .icon-wrap {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.card-header .icon-wrap svg { width: 20px; height: 20px; }
+
+.card-header .card-title {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  line-height: 1.3;
+}
+.card-header .card-title .kicker {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 3px;
+}
+
+.card-body {
+  padding: 8px 26px 22px;
+}
+
+.subsection {
+  padding: 20px 0;
+  border-bottom: 1px solid #EFE9DC;
+}
+.subsection:last-child { border-bottom: none; }
+
+.subsection h3 {
+  font-family: Arial, sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  color: var(--cast-iron);
+}
+
+.subsection ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.subsection li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #3D3A34;
+  padding: 7px 0;
+}
+.subsection li .check {
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+  margin-top: 1px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.provides-col .check { background: rgba(92,107,65,0.14); }
+.commits-col .check { background: rgba(63,74,45,0.12); }
+.subsection li .check svg { width: 10px; height: 10px; }
+.provides-col .check svg { stroke: var(--green); }
+.commits-col .check svg { stroke: var(--green-dark); }
+
+.subsection li.addon-item {
+  display: block;
+  border: 1.5px dashed var(--copper);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 10px;
+  background: rgba(181,117,74,0.05);
+}
+.subsection li.addon-item .addon-badge {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--copper);
+  background: rgba(181,117,74,0.14);
+  padding: 3px 9px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.closing {
+  max-width: 640px;
+  margin: 56px auto 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 30px 24px 0;
+  border-top: 1px solid #E4DCCB;
+}
+.closing .contact-name {
+  font-family: Georgia, serif;
+  font-size: 17px;
+  color: var(--cast-iron);
+  margin-bottom: 4px;
+}
+.closing .contact-title {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #8A8375;
+  margin-bottom: 8px;
+}
+.closing .contact-email {
+  font-size: 13.5px;
+  color: var(--green);
+  letter-spacing: 0.3px;
+}
+
+footer {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: #A69C86;
+  padding: 44px 20px 56px;
+}
+
+.tab-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  background: var(--cast-iron);
+  padding: 0 40px 24px;
+}
+.tab-btn {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: rgba(250,247,242,0.6);
+  background: transparent;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.tab-btn:hover { color: var(--off-white); }
+.tab-btn.active {
+  background: var(--green);
+  color: white;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.submit-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 70px 24px 90px;
+  text-align: center;
+}
+.submit-wrap h2 {
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0 0 14px;
+}
+.submit-wrap p {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #6B6656;
+  margin: 0 0 34px;
+}
+.submit-btn {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  background: var(--green);
+  text-decoration: none;
+  padding: 16px 40px;
+  border-radius: 30px;
+  transition: background 0.15s;
+}
+.submit-btn:hover { background: var(--green-dark); }
