@@ -1,37 +1,47 @@
-# Appellation Healdsburg — Winery of the Month dashboards
+# Appellation · Winery of the Month dashboards
 
-Static site served by GitHub Pages. No build step, no dependencies.
+Live: https://jules-esposito.github.io/appellation-winery-dashboards/
 
-| Path | Audience | Notes |
+## Pages
+
+| Page | Path | Audience |
 |---|---|---|
-| `index.html` | internal | Landing page linking both dashboards |
-| `schedule/index.html` | internal | 2026 partner schedule, August through December. Winery contact details stay hidden until sign in |
-| `partnership/index.html` | winery facing | What Appellation provides vs. what the winery commits to, plus the ClickUp intake form |
+| Hub, both properties | `/` | Internal |
+| Healdsburg landing | `/healdsburg/` | Internal |
+| Healdsburg schedule 2027 | `/healdsburg/schedule-2027/` | Internal |
+| Healdsburg schedule 2026 | `/healdsburg/schedule-2026/` | Internal |
+| Healdsburg partnership | `/healdsburg/partnership/` | Winery facing |
+| Lodi landing | `/lodi/` | Internal |
+| Lodi schedule 2027 | `/lodi/schedule-2027/` | Internal |
+| Lodi partnership | `/lodi/partnership/` | Winery facing |
 
-## Contact details are not in this repo
+Old links redirect: `/schedule/` → Healdsburg 2026, `/partnership/` → Healdsburg partnership, `/lodi/schedule/` → Lodi 2027.
 
-Winery contact names, emails and phone numbers live in Supabase, table `public.winery_contacts`,
-project `vkxjggeuicfrmenqdskl`. Row level security allows `select` only when the signed in email is
-active in `public.viewer_allowlist`, checked by `private.is_allowed_viewer()`. That is the same gate
-`cpc-eom-dashboard` uses.
+Winery-facing pages carry no links to internal pages. Send wineries only the partnership URL.
 
-The Supabase key embedded in `schedule/index.html` is a publishable key and reads nothing on its own.
-Never put a `service_role` key in these files.
+## Editing
 
-To grant someone access, add them to the allowlist and make sure they have a Supabase auth user:
+1. Change content in `data.py` (wineries, statuses, dates, partnership terms, contacts).
+2. Run `python3 build.py`. It regenerates every `index.html` and refuses to write if an em dash slips in.
+3. Commit and push. GitHub Pages redeploys in 1 to 3 minutes.
+
+Do not hand-edit generated `index.html` files; the next build overwrites them.
+`ameyalli-preview/` is a separate page and is not touched by the build.
+
+## Shared files
+
+- `assets/site.css`: the one stylesheet
+- `assets/site.js`: tabs, copy-link buttons, contact gate
+- `assets/logo.png`: white Appellation brandmark
+
+## Contact gate
+
+Contact names, emails and phones are not in this repo. They live in Supabase project `vkxjggeuicfrmenqdskl`, table `public.winery_contacts` (`slug`, `contact_name`, `contact_email`, `contact_phone`), readable only by emails active in `public.viewer_allowlist`. Each month card's `slug` in `data.py` matches a row. Missing rows show "Not on file yet" after sign-in.
+
+Grant a viewer (they also need a Supabase auth user):
 
 ```sql
 insert into public.viewer_allowlist (email, active) values ('name@appellationhotels.com', true);
 ```
 
-The sign in bar accepts a password or a one time email link.
-
-## Editing
-
-Edit the HTML and commit. Pages redeploys on every push to `main`.
-
-Schedule source data comes from ClickUp: workspace `9014048227`, space "Appellation Marketing",
-folder "Healdsburg", list "Winery of the Month" (`901418123665`). The winery intake form is
-`https://forms.clickup.com/9014048227/f/8cmexf3-4694/T38F7WBXB4CP6O7K2R`.
-
-`robots.txt` and a `noindex` tag on both dashboards keep the site out of search results.
+Free-tier Supabase projects pause after a week without activity. If sign-in stops working, restore the project from the Supabase dashboard.
