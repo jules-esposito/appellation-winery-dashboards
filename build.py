@@ -154,7 +154,7 @@ def schedule_page(key, prop):
         <div class="q-winery{' tbd-name' if not dn['winery'] else ''}">{dn['winery'] or 'Not yet assigned'}</div>
         <span class="q-status {dn['status']}">{dn['label']}</span>
       </div>""" for dn in sched["dinners"])
-        tabs.append(f'  <button class="tab-btn{active}" data-tab="{year}">{year}</button>')
+        tabs.append((year, f'  <button class="tab-btn{active}" data-tab="{year}">{year}</button>'))
         panels.append(f"""<div id="tab-{year}" class="tab-panel{active}">
 <main>
   <p class="year-range">{sched['range']}</p>
@@ -178,7 +178,7 @@ def schedule_page(key, prop):
     body = f"""{header(pd, prop['eyebrow'], prop['name'], 'Winery of the Month', 'Internal Partner Schedule', crumbs=crumbs)}
 
 <div class="tab-nav">
-{chr(10).join(tabs)}
+{chr(10).join(t for _, t in sorted(tabs))}
 </div>
 
 <div class="authwrap"><div class="authbar" id="authbar">
