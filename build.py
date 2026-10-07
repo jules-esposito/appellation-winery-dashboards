@@ -63,8 +63,7 @@ def header(page_dir, eyebrow, prop, prog, sub, *, crumbs=None, audience=None):
     return f"""{nav}<header>
   <img class="logo" src="{rel(page_dir, 'assets/logo.png')}" alt="Appellation">
 {eb}  <h1><span class="prop">{prop}</span><span class="prog">{prog}</span></h1>
-  <p class="sub">{sub}</p>
-</header>"""
+{f'  <p class="sub">{sub}</p>' + chr(10) if sub else ''}</header>"""
 
 
 def footer(*parts):
@@ -121,7 +120,7 @@ def month_card(prop, sched, m):
           <details class="bio-details"><summary>Winery Bio</summary>{bio}</details>
         </div>"""
 
-    return f"""    <article class="value-card{' is-tbd' if not m['winery'] else ''}" id="{m['month'].lower()}">
+    return f"""    <article class="value-card{' is-tbd' if not m['winery'] else ''}" id="{year}-{m['month'].lower()}">
       <div class="card-header">
         <div class="month-title"><div class="icon-wrap">{CAL_SVG}</div><h2>{m['month']} {year}</h2></div>
         <span class="quarter-tag">{tag}</span>
@@ -141,25 +140,45 @@ def month_card(prop, sched, m):
     </article>"""
 
 
-def schedule_page(key, prop, sched):
-    pd = sched["path"]
-    year = sched["year"]
-    cards = "\n\n".join(month_card(prop, sched, m) for m in sched["months"])
-    dinners = "\n".join(
-        f"""      <div class="dinner-card">
+def schedule_page(key, prop):
+    pd = prop["schedule_path"]
+    scheds = prop["schedules"]
+    tabs, panels = [], []
+    for i, sched in enumerate(scheds):
+        year = sched["year"]
+        active = " active" if i == 0 else ""
+        cards = "\n\n".join(month_card(prop, sched, m) for m in sched["months"])
+        dinners = "\n".join(
+            f"""      <div class="dinner-card">
         <div class="q-label">{dn['q']} {year}</div>
         <div class="q-winery{' tbd-name' if not dn['winery'] else ''}">{dn['winery'] or 'Not yet assigned'}</div>
         <span class="q-status {dn['status']}">{dn['label']}</span>
       </div>""" for dn in sched["dinners"])
+        tabs.append(f'  <button class="tab-btn{active}" data-tab="{year}">{year}</button>')
+        panels.append(f"""<div id="tab-{year}" class="tab-panel{active}">
+<main>
+  <p class="year-range">{sched['range']}</p>
+  <div class="legend">
+    <span><i class="status-dot confirmed"></i>Confirmed</span>
+    <span><i class="status-dot pending"></i>Pending confirmation</span>
+    <span><i class="status-dot tbd"></i>To be scheduled</span>
+  </div>
+  <div class="month-grid">
+{cards}
+  </div>
+  <h2 class="section-title"><span>{year} Quarterly Wine Dinners</span></h2>
+  <div class="dinner-grid">
+{dinners}
+  </div>
+</main>
+</div>""")
     chips = "\n".join(f'      <div class="chip">{c}</div>' for c in prop["recurring"])
-    other_years = [s for s in prop["schedules"] if s is not sched]
     crumbs = [("All properties", ""), (prop["name"], f"{key}/")]
 
-    body = f"""{header(pd, prop['eyebrow'], prop['name'], 'Winery of the Month', f"Partner Schedule &nbsp;&middot;&nbsp; {sched['range']}", crumbs=crumbs, audience='internal')}
+    body = f"""{header(pd, prop['eyebrow'], prop['name'], 'Winery of the Month', 'Internal Partner Schedule', crumbs=crumbs)}
 
 <div class="tab-nav">
-  <button class="tab-btn active" data-tab="schedule">{year} Schedule</button>
-  <button class="tab-btn" data-tab="dinners">Quarterly Wine Dinners</button>
+{chr(10).join(tabs)}
 </div>
 
 <div class="authwrap"><div class="authbar" id="authbar">
@@ -172,34 +191,17 @@ def schedule_page(key, prop, sched):
   <div class="ab-msg" id="ab-msg"></div>
 </div></div>
 
-<div id="tab-schedule" class="tab-panel active">
-<main>
-  <div class="legend">
-    <span><i class="status-dot confirmed"></i>Confirmed</span>
-    <span><i class="status-dot pending"></i>Pending confirmation</span>
-    <span><i class="status-dot tbd"></i>To be scheduled</span>
-  </div>
-  <div class="month-grid">
-{cards}
-  </div>
-</main>
-</div>
+{chr(10).join(panels)}
 
-<div id="tab-dinners" class="tab-panel">
-<main>
-  <h2 class="section-title"><span>{prop['name']} &middot; {year} Quarterly Wine Dinners</span></h2>
-  <div class="dinner-grid">
-{dinners}
-  </div>
+<main class="recurring">
   <h2 class="section-title"><span>Recurring Programming</span></h2>
   <div class="chip-list">
 {chips}
   </div>
 </main>
-</div>
 
-{footer(prop['footer'], 'Winery of the Month Program', f'{year}', 'Internal Use', f'Last updated {UPDATED}')}"""
-    return pd, page(pd, f"{prop['name']} &middot; Winery of the Month Schedule {year}", body, audience="internal", gate=True)
+{footer(prop['footer'], 'Winery of the Month Program', 'Internal Use', f'Last updated {UPDATED}')}"""
+    return pd, page(pd, f"{prop['name']} &middot; Winery of the Month Schedule", body, audience="internal", gate=True)
 
 
 # --------------------------------------------------------------- partnership
@@ -267,59 +269,23 @@ def partnership_page(key, prop):
 
 # ------------------------------------------------------------ landing + hub
 
-def card(page_dir, href, tag, title, text, go, copy=False):
-    url = rel(page_dir, href)
-    copy_html = f'<div class="copy-row"><button class="copy-btn" data-href="{url}">Copy link to send</button></div>' if copy else ""
-    tag_html = {"internal": '<span class="tag internal">Internal &middot; Team only</span>',
-                "external": '<span class="tag external">Winery facing &middot; Safe to send</span>'}[tag]
-    return f"""    <div>
-      <a class="card" href="{url}">{tag_html}<h3>{title}</h3><p>{text}</p><span class="go">{go} &rarr;</span></a>{copy_html}
-    </div>"""
-
-
 def landing_page(key, prop):
     pd = key
-    sched_cards = "\n".join(
-        card(pd, s["path"] + "/", "internal", f"Partner Schedule {s['year']}", s["blurb"] + " Contact details appear after sign in.", "Open schedule")
-        for s in prop["schedules"])
-    p = prop["partnership"]
-    body = f"""{header(pd, prop['eyebrow'], prop['name'], 'Winery of the Month', 'Program dashboards', crumbs=[('All properties', '')], audience='internal')}
-<main>
-  <section class="group">
-    <p class="group-label">Internal</p>
-    <p class="group-note">For the Appellation team. Do not send these links to wineries.</p>
-    <div class="cards">
-{sched_cards}
-    </div>
-  </section>
-  <section class="group">
-    <p class="group-label">Winery facing</p>
-    <p class="group-note">Send this page to featured and incoming winery partners. It shows only the partnership terms and the intake form.</p>
-    <div class="cards">
-{card(pd, p['path'] + '/', 'external', 'Featured Winery Partnership', f"What {prop['name']} provides, what the winery commits to, and the intake form.", 'Open partnership page', copy=True)}
-    </div>
-  </section>
-  <section class="group">
-    <p class="group-label">Recurring programming</p>
-    <div class="chip-list" style="justify-content:flex-start">
-{chr(10).join(f'      <div class="chip">{c}</div>' for c in prop['recurring'])}
-    </div>
-  </section>
-</main>
-{footer(prop['footer'], 'Winery of the Month Program', 'Internal Use')}"""
+    body = f"""{header(pd, prop['eyebrow'], prop['name'], 'Winery of the Month', '', crumbs=[('All properties', '')])}
+<main class="choice">
+  <a class="choice-btn" href="{rel(pd, prop['schedule_path'] + '/')}">Internal</a>
+  <a class="choice-btn external" href="{rel(pd, prop['partnership']['path'] + '/')}">External</a>
+</main>"""
     return pd, page(pd, f"{prop['name']} &middot; Winery of the Month", body, audience="internal")
 
 
 def hub_page():
     blocks = []
     for key, prop in PROPERTIES.items():
-        years = " and ".join(str(s["year"]) for s in sorted(prop["schedules"], key=lambda s: s["year"]))
-        place = re.sub(r"^.*?&middot;&nbsp;\s*", "", prop["eyebrow"])
         blocks.append(f"""    <div>
       <a class="card property-card" href="{key}/">
-        <span class="tag internal">{place}</span>
         <h3>{prop['name']}</h3>
-        <p>Partner schedules ({years}) for the team, plus the winery-facing partnership page.</p>
+        <p>Internal and External Dashboards</p>
         <span class="go">Open {prop['name'].replace('Appellation ', '')} &rarr;</span>
       </a>
     </div>""")
@@ -327,7 +293,6 @@ def hub_page():
 <main>
   <section class="group">
     <p class="group-label">Choose a property</p>
-    <p class="group-note">Each property page separates the internal schedules from the winery-facing partnership page.</p>
     <div class="cards">
 {chr(10).join(blocks)}
     </div>
@@ -338,18 +303,20 @@ def hub_page():
 
 
 def redirect_page(src, dest):
-    url = rel(src, dest + "/")
+    path, _, frag = dest.partition("#")
+    url = rel(src, path + "/")
+    hash_js = f'"#{frag}"' if frag else "location.hash"
+    href = url + (f"#{frag}" if frag else "")
     return src, f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="robots" content="noindex, nofollow">
 <title>Moved</title>
-<meta http-equiv="refresh" content="0; url={url}">
+<meta http-equiv="refresh" content="0; url={href}">
 <link rel="canonical" href="{url}">
-<script>location.replace("{url}" + location.search + location.hash);</script>
+<script>location.replace("{url}" + location.search + {hash_js});</script>
 </head><body style="font-family:Arial,sans-serif;background:#FAF7F2;color:#2B2A28;padding:40px">
-This page has moved. <a href="{url}" style="color:#5C6B41">Continue</a>.
+This page has moved. <a href="{href}" style="color:#5C6B41">Continue</a>.
 </body></html>
 """
-
 
 def write(page_dir, html):
     if "—" in html or "&mdash;" in html:
@@ -366,7 +333,7 @@ def main():
     for key, prop in PROPERTIES.items():
         out.append(landing_page(key, prop))
         out.append(partnership_page(key, prop))
-        out.extend(schedule_page(key, prop, s) for s in prop["schedules"])
+        out.append(schedule_page(key, prop))
     out.extend(redirect_page(src, dest) for src, dest in REDIRECTS.items())
     for pd, html in out:
         write(pd, html)

@@ -605,3 +605,42 @@ footer {
   .featured-name { font-size: 20px; }
   .intro { font-size: 16px; }
 }
+
+/* ---------- property landing: two buttons ---------- */
+.choice {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 72px 16px 96px;
+}
+.choice-btn {
+  flex: 0 1 260px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  background: var(--green);
+  padding: 26px 24px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(43,42,40,0.08);
+  transition: background 0.15s, transform 0.15s;
+}
+.choice-btn.external { background: var(--green-dark); }
+.choice-btn:hover { background: var(--cast-iron); transform: translateY(-2px); }
+
+/* ---------- schedule year tabs ---------- */
+.year-range {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin: 0 0 18px;
+}
+main.recurring { padding-top: 0; }

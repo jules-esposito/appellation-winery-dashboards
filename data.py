@@ -209,6 +209,7 @@ PROPERTIES = {
         "detail_labels": {"nn_wine": "Neighbor Night Wines", "friday_wine": "Friday Pour Wine"},
         "recurring": ["Neighbor Night &middot; Wednesdays", "Friday Lobby Pours &middot; Weekly", "Yappy Hour &middot; First Thursday"],
         "form_url": "https://forms.clickup.com/9014048227/f/8cmexf3-4694/T38F7WBXB4CP6O7K2R",
+        "schedule_path": "healdsburg/schedule",
         "schedules": [
             {"year": 2027, "path": "healdsburg/schedule-2027", "range": "January&ndash;December 2027",
              "months": HB_2027, "dinners": HB_2027_DINNERS,
@@ -272,6 +273,7 @@ PROPERTIES = {
         "detail_labels": {"nn_wine": "By the Glass Wines", "friday_wine": "Friday Reception Wine"},
         "recurring": ["Neighbor Nights &middot; Sundays and Mondays", "Friday Wine Reception &middot; 4 to 5 pm", "Three wines by the glass per partner", "American Fare &middot; May 2027"],
         "form_url": "https://forms.clickup.com/9014048227/f/8cmexf3-4974/FULVFIN59G0BM1XJEO",
+        "schedule_path": "lodi/schedule",
         "schedules": [
             {"year": 2027, "path": "lodi/schedule-2027", "range": "January&ndash;December 2027",
              "months": LO_2027, "dinners": LO_2027_DINNERS,
@@ -317,7 +319,9 @@ PROPERTIES = {
 
 # Old URLs that must keep working. Each becomes a redirect page.
 REDIRECTS = {
-    "schedule": "healdsburg/schedule-2026",
+    "schedule": "healdsburg/schedule#2026",
     "partnership": "healdsburg/partnership",
-    "lodi/schedule": "lodi/schedule-2027",
+    "healdsburg/schedule-2027": "healdsburg/schedule#2027",
+    "healdsburg/schedule-2026": "healdsburg/schedule#2026",
+    "lodi/schedule-2027": "lodi/schedule#2027",
 }

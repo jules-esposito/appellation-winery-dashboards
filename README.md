@@ -8,14 +8,13 @@ Live: https://jules-esposito.github.io/appellation-winery-dashboards/
 |---|---|---|
 | Hub, both properties | `/` | Internal |
 | Healdsburg landing | `/healdsburg/` | Internal |
-| Healdsburg schedule 2027 | `/healdsburg/schedule-2027/` | Internal |
-| Healdsburg schedule 2026 | `/healdsburg/schedule-2026/` | Internal |
+| Healdsburg schedules (2027 and 2026 tabs) | `/healdsburg/schedule/` | Internal |
 | Healdsburg partnership | `/healdsburg/partnership/` | Winery facing |
 | Lodi landing | `/lodi/` | Internal |
-| Lodi schedule 2027 | `/lodi/schedule-2027/` | Internal |
+| Lodi schedule (2027 tab) | `/lodi/schedule/` | Internal |
 | Lodi partnership | `/lodi/partnership/` | Winery facing |
 
-Old links redirect: `/schedule/` → Healdsburg 2026, `/partnership/` → Healdsburg partnership, `/lodi/schedule/` → Lodi 2027.
+Old links redirect: `/schedule/` and `/healdsburg/schedule-2026/` open the Healdsburg 2026 tab, `/healdsburg/schedule-2027/` the 2027 tab, `/lodi/schedule-2027/` the Lodi page, `/partnership/` the Healdsburg partnership page. Add `#2026` to a schedule URL to open that year.
 
 Winery-facing pages carry no links to internal pages. Send wineries only the partnership URL.
 

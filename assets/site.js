@@ -6,8 +6,20 @@ function showTab(name) {
   document.querySelectorAll(".tab-btn").forEach(function (b) { b.classList.toggle("active", b.dataset.tab === name); });
 }
 document.querySelectorAll(".tab-btn").forEach(function (b) {
-  b.addEventListener("click", function () { showTab(b.dataset.tab); });
+  b.addEventListener("click", function () {
+    showTab(b.dataset.tab);
+    if (/^\d{4}$/.test(b.dataset.tab)) history.replaceState(null, "", "#" + b.dataset.tab);
+  });
 });
+/* open the tab named in the URL, e.g. #2026 or #2026-december */
+(function () {
+  var h = location.hash.slice(1), year = h.split("-")[0];
+  if (year && document.getElementById("tab-" + year)) {
+    showTab(year);
+    var el = h.indexOf("-") > 0 && document.getElementById(h);
+    if (el) el.scrollIntoView();
+  }
+})();
 
 /* ---------- copy link buttons ---------- */
 document.querySelectorAll(".copy-btn").forEach(function (b) {
