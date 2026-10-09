@@ -328,6 +328,29 @@ def write(page_dir, html):
     print(f"  wrote /{page_dir + '/' if page_dir else ''}")
 
 
+SITE_URL = "https://jules-esposito.github.io/appellation-winery-dashboards/"
+TRELLIS_OUT = os.path.join(os.path.dirname(ROOT), "Trellis board", "winery-of-the-month.html")
+
+
+def trellis_hub():
+    """Self-contained copy of the hub for the Trellis board: inline CSS and logo, absolute links."""
+    import base64
+    _, html = hub_page()
+    css = open(os.path.join(ROOT, "assets", "site.css"), encoding="utf-8").read()
+    logo = base64.b64encode(open(os.path.join(ROOT, "assets", "logo.png"), "rb").read()).decode()
+    html = html.replace('<link rel="stylesheet" href="assets/site.css">', f"<style>\n{css}\n</style>")
+    html = html.replace('<link rel="icon" type="image/png" href="assets/logo.png">\n', "")
+    html = html.replace('src="assets/logo.png"', f'src="data:image/png;base64,{logo}"')
+    html = html.replace('<script src="assets/site.js"></script>\n', "")
+    for key in PROPERTIES:
+        html = html.replace(f'href="{key}/"', f'href="{SITE_URL}{key}/" target="_top"')
+    assert "assets/" not in html, "relative asset left in Trellis hub"
+    os.makedirs(os.path.dirname(TRELLIS_OUT), exist_ok=True)
+    with open(TRELLIS_OUT, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"  wrote Trellis board file: {TRELLIS_OUT}")
+
+
 def main():
     out = [hub_page()]
     for key, prop in PROPERTIES.items():
@@ -337,6 +360,7 @@ def main():
     out.extend(redirect_page(src, dest) for src, dest in REDIRECTS.items())
     for pd, html in out:
         write(pd, html)
+    trellis_hub()
 
 
 if __name__ == "__main__":

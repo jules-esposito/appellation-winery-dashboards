@@ -297,7 +297,10 @@ PROPERTIES = {
                 ]),
             ],
             "commits": [
-                ("Wine Support", ["Offer three wines to be poured by the glass"]),
+                ("Wine Support", [
+                    "Offer three wines to be poured by the glass",
+                    "Provide the wine for the weekly Friday Wine Reception pours, 4 to 5 pm, complimentary",
+                ]),
                 ("Guest Experience", [
                     "Provide an exclusive tasting experience for Appellation guests (e.g., two-for-one tasting, complimentary tasting upgrade, library tasting)",
                 ]),
@@ -306,7 +309,7 @@ PROPERTIES = {
                     "One dedicated email campaign at the start of the month, featuring the wine and the month's programming",
                 ]),
                 ("Winery Participation", [
-                    "Friday Reception Wine Pours are hosted weekly by your winery from 4 to 5 pm, with preference for a winemaker or principal to be present",
+                    "Friday Reception Wine Pours are hosted weekly by your winery from 4 to 5 pm, with wine provided complimentary and preference for a winemaker or principal to be present",
                     "Collaborate with the Appellation team by providing marketing assets, photography, brand information, and event details to support promotional efforts",
                     "Market involvement with Appellation Lodi, being a featured winery of the month, participating in Neighbor Nights and similar programming",
                 ]),
