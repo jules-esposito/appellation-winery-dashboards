@@ -176,7 +176,7 @@ LO_2027 = [
     lo_month("January", "Q1", "Mikami Vineyards", "mikami", season="Slow Season"),
     lo_month("February", "Q1", "Block 21 Winery", "block-21"),
     lo_month("March", "Q1", "LangeTwins", "langetwins"),
-    lo_month("April", "Q2", "Flowers", "flowers",
+    lo_month("April", "Q2", "Intercoastal Winery", "intercoastal",
              prog("Quarterly Wine Dinner", "Q2 Terre Rouge &middot; <span class=\"tbd-text\">date pending</span>"),
              status=PENDING),
     lo_month("May", "Q2", "Markus Wine Co.", "markus", season="Summer", note="American Fare"),
