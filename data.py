@@ -162,30 +162,93 @@ LO_NN = prog("Neighbor Nights", "Sundays and Mondays")
 LO_FRI = prog("Friday Wine Reception", "Fridays, 4 to 5 pm")
 
 
-def lo_month(month, quarter, winery, slug, *extra, status=CONFIRMED, season=None, note=None):
+def lo_month(month, quarter, winery, slug, *extra, status=CONFIRMED, season=None, note=None, details=None):
     programs = [LO_NN, LO_FRI, *extra]
     if note:
         programs.append(prog("Note", note, TBD))
     return {
         "month": month, "quarter": quarter, "season": season, "winery": winery, "slug": slug,
-        "status": status if winery else TBD, "programs": programs, "details": {},
+        "status": status if winery else TBD, "programs": programs, "details": details or {},
     }
 
 
+# Lodi winery details come from the ClickUp "Winery of the Month Lodi" intake form
+# (list 901421059398). Contact name, email and phone go to Supabase, never here.
 LO_2027 = [
-    lo_month("January", "Q1", "Mikami Vineyards", "mikami", season="Slow Season"),
-    lo_month("February", "Q1", "Block 21 Winery", "block-21"),
+    lo_month("January", "Q1", "Mikami Vineyards", "mikami", season="Slow Season", details={
+        "website": [link("mikamivineyards.com", "https://www.mikamivineyards.com")],
+        "social": "@mikamivineyards (Instagram, Facebook)",
+        "logo": [link("Logo Assets", "https://drive.google.com/drive/folders/1DaDVUCWKejhj5ZpRA7olzbzV4caUwJ2C?usp=drive_link")],
+        "photos": [link("Marketing Photos", "https://drive.google.com/drive/folders/1DaDVUCWKejhj5ZpRA7olzbzV4caUwJ2C?usp=drive_link")],
+        "nn_wine": "2024 Zinfandel &middot; 2024 GSM Red Blend (Grenache, Syrah, Mourv&egrave;dre)",
+        "friday_wine": "2024 Petite Sirah",
+        "offer": "20% off all purchases (no tasting room)",
+        "bio": "In 1895 my grandfather journeyed to America, settling in Lodi where he developed a passion for grape growing. Now in our second century and 3rd generation of farming, Mikami Vineyards produces single vineyard, handcrafted wines from the premier blocks of the family vineyard estate. This wine is a tribute to my father who for over 40 years managed our 15-acre vineyard by hand, but never saw the release of these wines. Mikami Vineyards is committed to sustainable farming practices and producing a refined, balanced style of wine. Thank you for supporting our family winery.",
+    }),
+    lo_month("February", "Q1", "Block 21 Winery", "block-21", details={
+        "website": [link("block21winery.com", "https://block21winery.com")],
+        "social": "@block21winery (Instagram) &middot; Block 21 Winery (Facebook)",
+        "logo": "Coming by email",
+        "photos": "Coming by email",
+        "nn_wine": "2025 Ros&eacute; &middot; Laurema Sparkling",
+        "friday_wine": "2023 Zinfandel",
+        "offer": "Two-for-one tasting",
+    }),
     lo_month("March", "Q1", "LangeTwins", "langetwins"),
-    lo_month("April", "Q2", "Intercoastal Winery", "intercoastal",
+    lo_month("April", "Q2", "Intercoastal Vineyards", "intercoastal",
              prog("Quarterly Wine Dinner", "Q2 Terre Rouge &middot; <span class=\"tbd-text\">date pending</span>"),
-             status=PENDING),
+             details={
+        "website": [link("intercoastalwine.com", "https://www.intercoastalwine.com")],
+        "social": "@intercoastalvineyards &middot; @inlovewines",
+        "logo": "See intercoastalwine.com",
+        "photos": "See intercoastalwine.com",
+        "nn_wine": "2022 Proprietary Red Blend &middot; 2025 Pinot Grigio",
+        "friday_wine": "in love 2025 Blanc de Blancs",
+        "offer": "Two-for-one tasting",
+        "bio": "As farmers, our passion begins in the field farming the land. We are dedicated to the production of amazing wine produced from the highest quality of hand-picked fruit and sustainably certified through Lodi Rules. Producing premium, award winning wines from Napa Valley, Lodi and Clarksburg, we are Ambassadors of California's finest. The curves of the waterways along our vineyards inspired the design of our signature \"S\" logo and artistically represents our family name, Spaletta. Inspired to capture the experience and significance of each moment in time, our trade-marked slogan \"Embrace Every Moment\" is printed on each bottle and exemplifies our passion for life.",
+    }),
     lo_month("May", "Q2", "Markus Wine Co.", "markus", season="Summer", note="American Fare"),
-    lo_month("June", "Q2", "Harney Lane Winery", "harney-lane"),
-    lo_month("July", "Q3", "Acquiesce Winery", "acquiesce"),
+    lo_month("June", "Q2", "Harney Lane Winery", "harney-lane", details={
+        "website": [link("harneylane.com", "https://www.harneylane.com")],
+        "social": "@harneylane",
+        "logo": "On file from 2026",
+        "photos": "On file from 2026",
+        "nn_wine": "2025 Chardonnay, Henry Ranch &middot; 2026 Albari&ntilde;o, Henry Ranch",
+        "friday_wine": "2023 Cabernet Sauvignon, Henry Ranch",
+        "offer": "Open to a tasting offer; asked who receives it and how it will be presented",
+        "bio": "As sixth-generation farmers, we've learned that high-quality, handcrafted wine requires an immense amount of heart and hard work. Nothing can replicate the years we've sown into the land and our family's legacy. Since 1900, with focus and fortitude, we've learned that excellence takes endurance, distinction takes determination, and grace takes grit. That's why we've taken matters into our own hands. We pour our heart into every step of the process, from soil to shelf; we're committed to making the best possible beverage for our customers and the planet. Our 100% estate-grown wines are produced from sustainably farmed vineyards and meticulously made with no unnecessary additives and an unwavering commitment to quality. The result is a classic collection of naturally smooth, fruit-driven wines, perfect for enjoying in everyday life. With over a century on Henry Ranch in the heart of Lodi Wine Country, our philosophy has been and will always be: to honestly make wine that is beautifully balanced and consciously crafted with grace and grit.",
+    }),
+    lo_month("July", "Q3", "Acquiesce Winery", "acquiesce", details={
+        "website": [link("acquiescevineyards.com", "https://www.acquiescevineyards.com")],
+        "logo": [link("Logo Assets", "https://www.dropbox.com/scl/fi/houg3nno0jh17enxvaq52/acquiesce-web-logo-1-01-2.png?rlkey=igu15sz7sw10nxgs0dl65gu0s&st=iucfpojd&dl=0")],
+        "photos": [link("Marketing Photos", "https://www.dropbox.com/scl/fo/f229ku0zl7fc8v0eyqs1a/AKYHOHlaQ3T4H8wXPQwrnpA?rlkey=gjk2t85ku33hwkqxhsb7odyc0&st=rl1sa008&dl=0")],
+        "nn_wine": "2025 Belle Blanc (Roussanne, Grenache Blanc, Bourboulenc) &middot; 2025 Picpoul Blanc",
+        "friday_wine": "2025 Grenache Ros&eacute;",
+        "offer": "Two-for-one tasting",
+        "bio": "Acquiesce Winery is California's only estate dedicated exclusively to Rh&ocirc;ne-style white and ros&eacute; wines. Founded by award-winning winemaker Sue Tipton, honored as Best Woman Winemaker 2022, our small-lot, estate-grown wines have earned accolades such as Double Gold, Best of Class, and Best of California.",
+    }),
     lo_month("August", "Q3", "Perlegos Family Wine Co.", "perlegos",
              prog("Quarterly Wine Dinner", "Q3 Perlegos &middot; <span class=\"tbd-text\">date pending</span>"),
-             season="Harvest"),
-    lo_month("September", "Q3", "Oak Farm Vineyards", "oak-farm"),
+             season="Harvest", details={
+        "website": [link("perlegoswine.com", "https://www.perlegoswine.com")],
+        "social": "@perlegos_wine (Instagram) &middot; @perlegoswine (Facebook)",
+        "logo": "See perlegoswine.com",
+        "photos": "See perlegoswine.com",
+        "nn_wine": "2024 Stampede Vineyard Zinfandel &middot; 2025 Assyrtiko",
+        "friday_wine": "2024 Cinsault",
+        "offer": "Complimentary tasting, by appointment",
+        "bio": "Growing up in the central valley of California, we've inherited a sense of pride from our Greek parents and have continued to farm vineyards and make wine, incorporating the Mediterranean lifestyle and culture into our everyday lives. We don't make wines that are made to have an instant and powerful impact like tasting room wines; our wines are wines of finesse and elegance, and are made to be enjoyed with friends, family, and food.",
+    }),
+    lo_month("September", "Q3", "Oak Farm Vineyards", "oak-farm", details={
+        "website": [link("oakfarmvineyards.com", "https://oakfarmvineyards.com")],
+        "social": "Oak Farm Vineyards (Instagram, Facebook)",
+        "logo": "Coming by email",
+        "photos": "Coming by email",
+        "nn_wine": "2024 Corset (GSM) Red Blend &middot; 2024 Estate Cabernet Sauvignon",
+        "friday_wine": "2025 Estate Albari&ntilde;o",
+        "offer": "Complimentary guest tasting; open to other options for the month",
+        "bio": "Every great wine has a story, and at Oak Farm Vineyards, that story begins in the heart of Lodi, California, where history, family, and a passion for exceptional winemaking come together. The estate's roots date back to the 1800s, when William DeVries established a beautiful agricultural property surrounded by majestic oak trees. Today, those same historic grounds provide the setting for one of Lodi's most distinctive family-owned wineries. Under the ownership of the Panella family, Oak Farm Vineyards has evolved into a premium wine destination while remaining true to its agricultural heritage. With generations of farming experience, the family understands that exceptional wine begins in the vineyard. What makes Oak Farm truly special is its ability to combine Old World inspiration with New World innovation. From elegant Cabernet Sauvignon and vibrant Sauvignon Blanc to beautifully balanced Zinfandel, every wine is crafted to showcase its varietal character, sense of place, and outstanding quality. Sustainability is also central to the winery's philosophy. Through responsible vineyard practices and a commitment to the land, Oak Farm helps preserve Lodi's rich agricultural legacy for future generations.",
+    }),
     lo_month("October", "Q4", None, None),
     lo_month("November", "Q4", None, None, season="Holidays"),
     lo_month("December", "Q4", None, None,

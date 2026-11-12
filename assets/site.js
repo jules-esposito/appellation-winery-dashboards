@@ -17,7 +17,7 @@ document.querySelectorAll(".tab-btn").forEach(function (b) {
   if (year && document.getElementById("tab-" + year)) {
     showTab(year);
     var el = h.indexOf("-") > 0 && document.getElementById(h);
-    if (el) el.scrollIntoView();
+    if (el) window.addEventListener("load", function () { el.scrollIntoView(); });
   }
 })();
 

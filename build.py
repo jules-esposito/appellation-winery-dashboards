@@ -79,6 +79,15 @@ def links_html(links, buttons=False):
     return " &middot; ".join(f'<a href="{l["url"]}" target="_blank" rel="noopener">{l["label"]}</a>' for l in links)
 
 
+def asset_html(v):
+    """Asset links render as buttons; a plain-text note (e.g. 'Coming by email') renders as text."""
+    if not v:
+        return PENDING_SUB
+    if isinstance(v, str):
+        return f'<span class="tbd-text">{v}</span>'
+    return links_html(v, True)
+
+
 def month_card(prop, sched, m):
     year = sched["year"]
     d = m.get("details", {})
@@ -101,11 +110,13 @@ def month_card(prop, sched, m):
         fields = [
             f'<div class="wd-field wd-contact" data-w="{m["slug"]}"></div>',
             f'<div class="wd-field"><span class="wd-key">Website / Social</span>{web_html or PENDING_SUB}</div>',
-            f'<div class="wd-field"><span class="wd-key">Logo Assets</span>{links_html(d["logo"], True) if d.get("logo") else PENDING_SUB}</div>',
-            f'<div class="wd-field"><span class="wd-key">Marketing Photos</span>{links_html(d["photos"], True) if d.get("photos") else PENDING_SUB}</div>',
+            f'<div class="wd-field"><span class="wd-key">Logo Assets</span>{asset_html(d.get("logo"))}</div>',
+            f'<div class="wd-field"><span class="wd-key">Marketing Photos</span>{asset_html(d.get("photos"))}</div>',
             f'<div class="wd-field"><span class="wd-key">{labels["nn_wine"]}</span>{d.get("nn_wine") or PENDING_SUB}</div>',
             f'<div class="wd-field"><span class="wd-key">{labels["friday_wine"]}</span>{d.get("friday_wine") or PENDING_SUB}</div>',
         ]
+        if d.get("offer"):
+            fields.append(f'<div class="wd-field"><span class="wd-key">Guest Tasting Offer</span>{d["offer"]}</div>')
         yappy = ""
         if d.get("yappy"):
             cls, text = d["yappy"]
