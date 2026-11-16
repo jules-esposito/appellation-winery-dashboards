@@ -207,7 +207,15 @@ LO_2027 = [
         "offer": "Two-for-one tasting",
         "bio": "As farmers, our passion begins in the field farming the land. We are dedicated to the production of amazing wine produced from the highest quality of hand-picked fruit and sustainably certified through Lodi Rules. Producing premium, award winning wines from Napa Valley, Lodi and Clarksburg, we are Ambassadors of California's finest. The curves of the waterways along our vineyards inspired the design of our signature \"S\" logo and artistically represents our family name, Spaletta. Inspired to capture the experience and significance of each moment in time, our trade-marked slogan \"Embrace Every Moment\" is printed on each bottle and exemplifies our passion for life.",
     }),
-    lo_month("May", "Q2", "Markus Wine Co.", "markus", season="Summer", note="American Fare"),
+    lo_month("May", "Q2", "Markus Wine Co.", "markus", season="Summer", note="American Fare", details={
+        "website": [link("markuswine.com", "https://www.markuswine.com")],
+        "logo": None,
+        "photos": "Use the photos the Appellation team took this year",
+        "nn_wine": "2026 Vermentino &middot; 2026 Nativo (100% Kerner)",
+        "friday_wine": "2024 Rous Ancient Vine Zinfandel",
+        "offer": "Sampling of the featured wines; older vintages to taste on request",
+        "bio": "Small boutique winery focusing on Old &amp; Ancient Vine vineyards and interesting white wines. Quality grapes is the success story for these wonderful wines. Markus Wine Co is not open to the public, but for the month of May, you can buy our featured wines in the restaurant at a very attractive price!",
+    }),
     lo_month("June", "Q2", "Harney Lane Winery", "harney-lane", details={
         "website": [link("harneylane.com", "https://www.harneylane.com")],
         "social": "@harneylane",
