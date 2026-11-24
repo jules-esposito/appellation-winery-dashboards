@@ -318,7 +318,7 @@ PROPERTIES = {
                 ("Programming &amp; Events", [
                     "Exclusive winery partner for Neighbor Night, held every Wednesday of the month, with a by-the-glass and by-the-bottle offering at a featured promotional price",
                     "Friday Lobby Wine Pours hosted weekly by your winery throughout the month, with preference for a winemaker or principal to be present",
-                    "Featured Winery Dinner: an intimate monthly dinner for 12 to 14 guests in the Atelier, ticketed and marketed by both your winery and Appellation Healdsburg",
+                    "Featured Winery Dinner: an intimate monthly dinner for 12 to 14 guests in Atelier Alyse, ticketed and marketed by both your winery and Appellation Healdsburg",
                     {"addon": "Yappy Hour: option and preference for your winery to take part, held the first Thursday of every month."},
                 ]),
             ],
